@@ -1,0 +1,25 @@
+1. What is your shell?
+
+
+2. At your shell prompt, what do the keys "up", "down", "left", and "right" do?
+
+
+3. In your shell, what are the "~", ".", and ".." directories?
+
+
+4. At your shell prompt, what does the command "!string" do?
+
+
+5. At your shell prompt, what does the command "!number" do?
+
+
+6. What are the personal configuration files for your shell?
+
+
+7. What do the commands "echo", "time", and "date" do?
+
+
+8. In your system, are "echo" and "time" programs or shell commands?
+
+
+9. In your system, does your shell-completion work for the long options and/or Makefile targets?
