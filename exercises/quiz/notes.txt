@@ -1,4 +1,4 @@
-	ß1. What is your shell?
+1. What is your shell?
 - How to check: echo $SHELL
 - result: /bin/zsh
 
