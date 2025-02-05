@@ -1,0 +1,63 @@
+1. What is your shell?
+- How to check: echo $SHELL
+- result: /bin/zsh
+
+
+2. At your shell prompt, what do the keys "up", "down", "left", and "right" do?
+- up: goes backwards in search history 
+- down: goes forward
+- left: moves left in command line
+- right: moved right in command line
+
+
+3. In your shell, what are the "~", ".", and ".." directories?
+- ~ : home directory
+- cd ~ : go to home
+
+- . : current directory
+
+- .. : go one level up in directory
+
+
+4. At your shell prompt, what does the command "!string" do?
+- !! : runs last command
+- "!git" after "git pull origin main" : repeats
+
+
+5. At your shell prompt, what does the command "!number" do?
+- "history" : shows command history with numbering 
+- "!41" : runs command number 41
+
+
+6. What are the personal configuration files for your shell?
+- ~/.zshrc : main configuration file
+- ~/.zshenv : minimal configuration file
+- ~/.zprofile : runs at login
+- ~/.zlogin : runs after the previous one
+- ~/.zlogout : runs when exiting a Zsh session
+
+
+7. What do the commands "echo", "time", and "date" do?
+- echo : prints text in terminal
+- time: shows CPU time used by shell since it started
+- date : shows date 
+
+
+8. In your system, are "echo" and "time" programs or shell commands?
+- echo : shell built-in command
+- time : reserved word in Zch (handled internally by the shell
+
+how to verify:
+- (base) ceciliestromsnes@MacBook-Air ~ % type echo
+- echo is a shell builtin
+
+- (base) ceciliestromsnes@MacBook-Air ~ % type time
+- time is a reserved word
+
+
+9. In your system, does your shell-completion work for the long options and/or Makefile targets?
+- My shell completion works for Makefile targets
+
+Verification:
+- make (TAB)
+- or ls --(TAB) (didn't work)
