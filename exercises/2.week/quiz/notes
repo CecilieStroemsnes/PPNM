@@ -1,0 +1,31 @@
+1. Suppose you have messed up your project terribly with the latest (uncommitted) changes. How can you discard all changes that you have done to your project since the last commit?
+- 
+
+2. Suppose you have realized that the last commit contained an error. How can you discard the last commit? The last two commits?
+- 
+
+3. Suppose you have committed some changes to your project at the server (the place where you push) and at the same time some other changes at your box. What do you do now? Hint: merge.
+- 
+
+4. What are the values of the following automatic variables in a Makefile: $@, $<, $^?
+- 
+
+5. What does this statement do in a Makefile recipe: $(filter %.cs,$^) ?
+- 
+
+6. What does this statement do in a Makefile recipe: $(addprefix -reference:,$(filter %.dll,$^)) ?
+- 
+
+7. When defining a macro in a Makefile, what is the difference between "=" and ":="?
+- 
+
+8. In your shell, what is the meaning of the following shell variables: $HOME, $PATH, $PWD ?
+- 
+
+9. In your shell, what is the difference between the single quote, double quote, and backquote signs? Hint: try
+echo '$HOME'
+echo "$HOME"
+echo '"$HOME"'
+echo "'$HOME'"
+echo `pwd`
+- 
