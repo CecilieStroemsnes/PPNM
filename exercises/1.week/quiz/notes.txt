@@ -13,9 +13,7 @@
 3. In your shell, what are the "~", ".", and ".." directories?
 - ~ : home directory
 - cd ~ : go to home
-
 - . : current directory
-
 - .. : go one level up in directory
 
 
