@@ -1,31 +1,38 @@
 1. Suppose you have messed up your project terribly with the latest (uncommitted) changes. How can you discard all changes that you have done to your project since the last commit?
-- 
+- using git checkout --
 
 2. Suppose you have realized that the last commit contained an error. How can you discard the last commit? The last two commits?
-- 
+- Discard the last commit but keep the changes unstaged:
+		git reset --soft HEAD~1
+- Discard the last commit and remove the changes completely:
+		git reset --hard HEAD~1
 
 3. Suppose you have committed some changes to your project at the server (the place where you push) and at the same time some other changes at your box. What do you do now? Hint: merge.
-- 
+- git pull --rebase origin main
 
 4. What are the values of the following automatic variables in a Makefile: $@, $<, $^?
-- 
+- $@ : name of target being generated
+- $< : first dependency
+- $^: list of dependencies
 
 5. What does this statement do in a Makefile recipe: $(filter %.cs,$^) ?
-- 
+- filters the list of dependencies $^ to include only those ending in .cs
 
 6. What does this statement do in a Makefile recipe: $(addprefix -reference:,$(filter %.dll,$^)) ?
-- 
+- filter $^ to include only files ending in .dll and then prefixes each with -reference:
 
 7. When defining a macro in a Makefile, what is the difference between "=" and ":="?
-- 
+- = : value is expanded only when used
+- := : value is expanded immediately when assigned
 
 8. In your shell, what is the meaning of the following shell variables: $HOME, $PATH, $PWD ?
-- 
+- $HOME : path to user's home directory
+- $PATH : list of directories where executables are searched for
+- $PWD  : current working directory
 
 9. In your shell, what is the difference between the single quote, double quote, and backquote signs? Hint: try
-echo '$HOME'
-echo "$HOME"
-echo '"$HOME"'
-echo "'$HOME'"
-echo `pwd`
-- 
+echo '$HOME'   : output $HOME
+echo "$HOME"   : output /Users/ceciliestromsnes
+echo '"$HOME"' : output "$HOME"
+echo "'$HOME'" : output '/Users/ceciliestromsnes'
+echo `pwd`     : output /Users/ceciliestromsnes/PPNM/exercises/2.week/quiz
