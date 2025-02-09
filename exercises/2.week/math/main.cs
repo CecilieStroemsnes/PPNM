@@ -1,25 +1,42 @@
 using System;
+using System.Globalization; // make . instead of ,
 using static System.Math;
 
-class main {
-	static int Main(string[] args) {
-		Console.WriteLine("hello");
-		
-		// math
-		double sqrt2 = Sqrt(2.0);
-		double power = Pow(21.0, 1.0 / 5.0);
-		double e_pi = Pow(E, PI);
-		double pi_e = Pow(PI, E);
+class Program
+{
+    static void Main()
+    {
+	CultureInfo.CurrentCulture = CultureInfo.InvariantCulture; //ensure dot decimal
 
-		Console.WriteLine($"sqrt2^2 = {sqrt2 * sqrt2}" );
-		Console.WriteLine($"21^(1/5) = {power}");
-		Console.WriteLine($"e^pi = {e_pi}");
-		Console.WriteLine($"pi^2 = {pi_e}");
-	
-		
-		return 0;
-	}
+        // Part 1: Compute Math Constants
+        Console.WriteLine($"Sqrt(2) = {Sqrt(2)}");
+        Console.WriteLine($"2^(1/5) = {Pow(2, 1.0/5)}");
+        Console.WriteLine($"e^π = {Pow(E, PI)}");
+        Console.WriteLine($"π^e = {Pow(PI, E)}");
+
+        Console.WriteLine("\nGamma Function Tests:");
+        
+        // Expected Gamma function values for integers: Γ(n) = (n-1)!
+        for (int n = 1; n <= 10; n++)
+        {
+            double gammaValue = sfuns.fgamma(n);
+            Console.WriteLine($"Γ({n}) = {gammaValue}, Expected: {Factorial(n-1)}");
+        }
+
+        Console.WriteLine("\nLog-Gamma Function Tests:");
+        for (double x = 1; x <= 10; x++)
+        {
+            double lngammaValue = sfuns.lngamma(x);
+            Console.WriteLine($"ln(Γ({x})) = {lngammaValue}");
+        }
+    }
+
+    // Helper function to compute factorial for expected Gamma values
+    static double Factorial(int n)
+    {
+        if (n == 0) return 1;
+        double result = 1;
+        for (int i = 1; i <= n; i++) result *= i;
+        return result;
+    }
 }
-
-
-

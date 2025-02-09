@@ -13,8 +13,7 @@ sfuns.dll : sfuns.cs
 	mcs -target:library -out:sfuns.dll sfuns.cs
 
 clean:
-	$(RM) sfuns.dll main.exe Out.txt #remove all files made during project, only use when moving project
-                                         # to architecture or something went wrong
+	$(RM) sfuns.dll main.exe Out.txt #remove all generated files 
 
 test:
-	echo $(RM) 
+	@echo "RM command: $(RM)" 
