@@ -1,0 +1,15 @@
+Initialized two vectors:
+1 2 3
+3 2 1
+Sum of vectors:
+4 4 4
+Difference of vectors:
+-2 0 2
+Scaled vector:
+2 4 6
+Dot product:
+10
+Cross product:
+-4 8 -4
+Cross product dot product:
+0
