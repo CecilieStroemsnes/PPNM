@@ -1,0 +1,12 @@
+Comparing computed and expected values:
+sqrt(-1) = 6,12e-17+1i (Expected: ±i) -> True
+sqrt(i) = 0,707+0,707i (Expected: ±(1+i)/√2) -> True
+exp(i) = 0,54+0,841i (Expected: cos(1)+i*sin(1)) -> True
+exp(i*π) = -1+1,22e-16i (Expected: -1) -> True
+i^i = 0,208+0i (Expected: exp(-π/2)) -> True
+ln(i) = 0+1,57i (Expected: iπ/2) -> True
+sin(i*π) = 0+11,5i (Expected: i*sinh(π)) -> True
+
+Testing hyperbolic functions:
+sinh(i) = 0+0,841i (Expected: i sin(1)) -> True
+cosh(i) = 0,54+0i (Expected: cos(1)) -> True
