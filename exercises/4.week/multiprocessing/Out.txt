@@ -1,0 +1,31 @@
+Manual multithreading
+Harmonic sum 1 to 100000000 ≈ 18,9978964138526
+real 0,19
+user 0,18
+sys 0,00
+
+Harmonic sum 1 to 100000000 ≈ 18,997896413853
+real 0,13
+user 0,22
+sys 0,00
+
+Harmonic sum 1 to 100000000 ≈ 18,9978964138495
+real 0,12
+user 0,30
+sys 0,00
+
+Harmonic sum 1 to 100000000 ≈ 18,9978964138499
+real 0,09
+user 0,28
+sys 0,00
+
+Pitfalls in multiprocessing
+Harmonic sum 1 to 100000000 ≈ 18,9978964138526
+
+Pitfalls in multiprocessing
+Parallel.For (wrong shared sum):
+[Parallel.For - wrong] Harmonic sum 1 to 100000000 ≈ 16,036709334156
+[Parallel.For - right] Harmonic sum 1 to 100000000 ≈ 18,9978964138517
+real 7,94
+user 47,03
+sys 9,28
