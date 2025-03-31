@@ -1,11 +1,36 @@
 using System;
 using System.IO;
 using System.Globalization;
+using System.Diagnostics;
 
 public class main {
     public static void Main(string[] args) {
 
         System.Threading.Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
+
+        // Optional Task C: check Jacobi scaling O(n³)
+        if (args.Length > 0 && args[0] == "-scaling") {
+        using (var writer = new StreamWriter("scaling_times.txt")) {
+            writer.WriteLine("# n time_seconds");
+            for (int n_scaling = 20; n_scaling <= 200; n_scaling += 20) {
+                matrix A_scaling = new matrix(n_scaling, n_scaling);
+                var rnd_scaling = new Random();
+                for (int i = 0; i < n_scaling; i++)
+                    for (int j = i; j < n_scaling; j++)
+                        A_scaling[i, j] = A_scaling[j, i] = rnd_scaling.NextDouble();
+
+                var sw = Stopwatch.StartNew();
+                var result = jacobi.cyclic(A_scaling);
+                sw.Stop();
+
+                double seconds = sw.Elapsed.TotalSeconds;
+                writer.WriteLine($"{n_scaling} {seconds:F6}");
+                Console.WriteLine($"n={n_scaling}, time={seconds:F4}s");
+            }
+        }
+        return;
+        }
+
 
         // Task A
 
