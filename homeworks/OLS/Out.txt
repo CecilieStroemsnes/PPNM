@@ -1,0 +1,11 @@
+Fit results for ln(y) = ln(a) - λt:
+ln(a) = 4,95866 ± 0,03540
+-λ    = -0,17062 ± 0,00716
+
+Interpreted parameters:
+a (activity factor) = 142,40354
+λ (decay constant)  = 0,17062 ± 0,00716
+Estimated half-life T1/2 = 4,06242 ± 0,17039 days
+
+Modern half-life for 224Ra: 3,66 days
+The estimated half-life does NOT agree with the modern value within the uncertainty.
