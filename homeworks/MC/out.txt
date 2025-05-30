@@ -1,0 +1,10 @@
+--- Plain Monte Carlo (Task A) ---
+Output written to unit_circle_estimated.txt and unit_circle_actual.txt
+
+--- 3D Singular Integral ---
+Estimated:    1,388339704917 ± 0,002625465626
+Known value:  1,39320392968568
+Actual error: 0,004864224769
+
+--- Quasi-Random MC (Halton, Task B) ---
+Output written to unit_circle_qrand_estimated.txt
