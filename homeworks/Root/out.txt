@@ -1,0 +1,41 @@
+Task A: Newton's method with numerical Jacobian and back-tracking line-search
+=============================================================
+
+Solving ∇f(x, y) = 0 for the Rosenbrock function:
+f(x, y) = (1 - x)² + 100(y - x²)²
+∂f/∂x = -2(1 - x) - 400x(y - x²)
+∂f/∂y = 200(y - x²)
+
+Found minimum of Rosenbrock at:
+         1          1 
+
+
+Solving ∇f(x, y) = 0 for Himmelblau's function:
+f(x, y) = (x² + y - 11)² + (x + y² - 7)²
+∂f/∂x = 4x(x² + y - 11) + 2(x + y² - 7)
+∂f/∂y = 2(x² + y - 11) + 4y(x + y² - 7)
+
+Minimum #1 found at:
+         3          2 
+
+Minimum #2 found at:
+     -2,81       3,13 
+
+Minimum #3 found at:
+     -3,78      -3,28 
+
+Minimum #4 found at:
+      3,58      -1,85 
+
+Task B: Bound states of hydrogen atom with shooting method for boundary value problems
+=============================================================
+
+Found ground state energy: E0 = -0,499975 (expected: -0.5)
+
+Wrote numerical and exact wavefunctions to out_hydrogen.txt
+Plot of wavefunction can be found in wavefunction.png
+
+
+Running convergence tests...
+Convergence tests complete. Data saved to rmax.txt, rmin.txt, acc.txt, eps.txt.
+Plots of convergence tests can be found in convergence_acc.png, convergence_eps.png, convergence_rmax.png, convergence_rmin.png
