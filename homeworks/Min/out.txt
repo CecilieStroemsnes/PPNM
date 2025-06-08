@@ -1,0 +1,46 @@
+
+=============================================================
+Task A: Newton's method with numerical gradient, numerical Hessian matrix and back-tracking linesearch
+=============================================================
+
+Rosebrock guess: [2,0000, 2,0000]
+Rosenbrock minimum: [1,0000, 1,0001], steps: 14
+
+Himmelblau guess: [-2,0000, 2,0000]
+Himmelblau minimum: [-2,8051, 3,1313], steps: 5
+
+=============================================================
+Task B: Higgs boson discovery
+=============================================================
+
+Best fit parameters:
+Mass  = 125,9722 GeV
+Width = 2,0863 GeV
+A     = 9,8762
+Steps = 161
+Fit data written to fit.txt
+Data points written to data.txt
+A plot of the fit can be found in higgs_fit.png.
+
+=============================================================
+Task C: Central instead of forward finite difference approximation for the derivatives
+=============================================================
+
+Comparing gradient approximations at the known minimum (x, y) = (1, 1):
+Gradient using forward difference:
+   1,2e-05   2,98e-06 
+Gradient using central difference:
+  3,55e-13          0 
+→ The central difference gives a gradient closer to zero, as expected at a minimum.
+
+Comparing Hessian approximations at the same point:
+Hessian using forward difference:
+
+       802       -400 
+      -400        200 
+Hessian using central difference:
+
+       802          0 
+         0        200 
+→ The central difference gives a symmetric and more accurate Hessian.
+
