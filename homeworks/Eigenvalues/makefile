@@ -1,10 +1,19 @@
-all: Out.txt
+OUT = Out.txt
+EXE = main.exe
+SRC = main.cs matrix.cs vector.cs jacobi.cs
+PLOTS = dr.svg rmax.svg wavefunctions.svg
 
-main.exe: main.cs jacobi.cs matrix.cs vector.cs
-	mcs -target:exe -out:main.exe main.cs jacobi.cs matrix.cs vector.cs
+$(OUT): $(EXE)
+	mono $(EXE) > $(OUT)
+	gnuplot plot_convergence_dr.gp
+	gnuplot plot_convergence_rmax.gp
+	gnuplot plot_wavefunctions.gp
+	gnuplot plot_scaling.gp
 
-Out.txt: main.exe
-	mono main.exe > Out.txt
+$(EXE): $(SRC)
+	mcs -target:exe -out:$(EXE) $(SRC)
 
 clean:
-	rm -f *.exe *.dll Out.txt
+	rm -f *.exe *.dll *.svg *.txt *.log $(OUT)
+
+

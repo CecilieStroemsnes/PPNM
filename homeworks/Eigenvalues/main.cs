@@ -8,33 +8,13 @@ public class main {
 
         System.Threading.Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
 
-        // Optional Task C: check Jacobi scaling O(n³)
-        if (args.Length > 0 && args[0] == "-scaling") {
-        using (var writer = new StreamWriter("scaling_times.txt")) {
-            writer.WriteLine("# n time_seconds");
-            for (int n_scaling = 20; n_scaling <= 200; n_scaling += 20) {
-                matrix A_scaling = new matrix(n_scaling, n_scaling);
-                var rnd_scaling = new Random();
-                for (int i = 0; i < n_scaling; i++)
-                    for (int j = i; j < n_scaling; j++)
-                        A_scaling[i, j] = A_scaling[j, i] = rnd_scaling.NextDouble();
-
-                var sw = Stopwatch.StartNew();
-                var result = jacobi.cyclic(A_scaling);
-                sw.Stop();
-
-                double seconds = sw.Elapsed.TotalSeconds;
-                writer.WriteLine($"{n_scaling} {seconds:F6}");
-                Console.WriteLine($"n={n_scaling}, time={seconds:F4}s");
-            }
-        }
-        return;
-        }
-
-
         // Task A
 
-        Console.WriteLine("Task A: Jacobi diagonalization with cyclic sweeps");
+        Console.WriteLine();
+        Console.WriteLine("=============================================================");
+        Console.WriteLine("Task A");
+        Console.WriteLine("=============================================================");
+        Console.WriteLine();
         
         int n = 5;
         matrix A = new matrix(n,n);
@@ -45,20 +25,23 @@ public class main {
             for (int j = i; j < n; j++)
                 A[i,j] = A[j,i] = rnd.NextDouble();
         
-        Console.WriteLine("A = ");
+        Console.WriteLine("\nMatrix A:");
         A.print();
 
         (vector w, matrix V) = jacobi.cyclic(A);
 
-        Console.WriteLine("\nEigenvalue, w = ");
+        Console.WriteLine("\nEigenvalue, w:");
         w.print();
 
-        Console.WriteLine("\nEigenvector, V = ");
+        Console.WriteLine("\nEigenvector, V:");
         V.print();
 
         matrix D = new matrix(n,n);
         for (int i = 0; i < n; i++)
             D[i,i] = w[i];
+
+        Console.WriteLine("\nDiagonal matrix D:");
+        D.print();
 
         matrix Vt = V.transpose();
         matrix VtAV = Vt*A*V;
@@ -80,8 +63,13 @@ public class main {
 
 
         // Task B
-        Console.WriteLine("\nTask B: Hydrogen atom, s-wave radial Schrödinger equation on a grid");
 
+        Console.WriteLine();
+        Console.WriteLine("=============================================================");
+        Console.WriteLine("Task B");
+        Console.WriteLine("=============================================================");
+        Console.WriteLine();
+        
         double rmax = 10, dr = 0.3;
 
         for (int i = 0; i < args.Length -1; i++) {
@@ -104,10 +92,16 @@ public class main {
         
         for(int i=0;i<npoints;i++)H[i,i]+=-1/r[i];
 
-        Console.WriteLine($"Using rmax={rmax}, dr={dr}, npoints={npoints}");
+        Console.WriteLine($"Solving the radial Schrödinger equation for hydrogen atom");
+        Console.WriteLine($"Parameters: rmax = {rmax}, dr = {dr}, npoints = {npoints}");
+        
         (vector energies, matrix wavefunctions) = jacobi.cyclic(H);
 
-        energies.print("Lowest hydrogen eigenvalues (ε₀, ε₁, ...):");
+        //energies.print("Lowest hydrogen eigenvalues (ε₀, ε₁, ...):");
+        Console.WriteLine("\nLowest 5 hydrogen eigenvalues ε₀, ε₁, ..., ε₄:");
+        for (int i = 0; i < 5 && i < energies.size; i++) {
+            Console.WriteLine($"ε_{i} = {energies[i]:f5}");
+        }
 
 
         // Convergence test dr
@@ -155,6 +149,10 @@ public class main {
             }
         }
 
+        Console.WriteLine();
+        Console.WriteLine("Convergence data saved in convergence_dr.txt and convergence_rmax.txt");
+        Console.WriteLine("Corresponding plots generated as dr.svg and rmax.svg");
+
         // wavefunctions
         using (var writer = new StreamWriter("wavefunctions.txt")) {
             double norm = 1.0 / Math.Sqrt(dr);
@@ -167,8 +165,42 @@ public class main {
                 writer.WriteLine($"{rval:f5} {f0:f8} {f1:f8} {f2:f8}");
             }
         }
-        Console.WriteLine("Saved wavefunctions to wavefunctions.txt");
+        Console.WriteLine();
+        Console.WriteLine("Wavefunctions saved in wavefunctions.txt");
+        Console.WriteLine("Plot of wavefunctions generated as wavefunctions.svg");
 
+
+        Console.WriteLine();
+        Console.WriteLine("=============================================================");
+        Console.WriteLine("Task C");
+        Console.WriteLine("=============================================================");
+        Console.WriteLine();
+
+        using (var writer = new StreamWriter("scaling_times.txt")) {
+            writer.WriteLine("# n time_seconds");
+            for (int n_scaling = 20; n_scaling <= 200; n_scaling += 20) {
+                matrix A_scaling = new matrix(n_scaling, n_scaling);
+                var rnd_scaling = new Random();
+                for (int i = 0; i < n_scaling; i++)
+                    for (int j = i; j < n_scaling; j++)
+                        A_scaling[i, j] = A_scaling[j, i] = rnd_scaling.NextDouble();
+
+                var sw = Stopwatch.StartNew();
+                var result = jacobi.cyclic(A_scaling);
+                sw.Stop();
+
+                double seconds = sw.Elapsed.TotalSeconds;
+                writer.WriteLine($"{n_scaling} {seconds:F6}");
+                Console.WriteLine($"n={n_scaling}, time={seconds:F4}s");
+            }
+        }
+
+        Console.WriteLine();
+        Console.WriteLine("Timing data written to scaling_times.txt");
+        Console.WriteLine("Scaling plot saved as scaling.svg");
+        Console.WriteLine();
+
+        return;
     }
 
 }
