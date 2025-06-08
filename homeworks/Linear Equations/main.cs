@@ -59,10 +59,14 @@ public class Program{
     public static void Main(string[] args){
 
         var rnd = new System.Random(1);
+
+        WriteLine();
+        WriteLine("=============================================================");
+        WriteLine("Task A");
+        WriteLine("=============================================================");
+        WriteLine();
         
         // QR decomposition of a matrix test
-        WriteLine("/nChecking decomposition of a matrix A:");
-        
         int n = 4;
         int m = 3;
         matrix A = new matrix(n,m);
@@ -71,13 +75,14 @@ public class Program{
             for(int j=0; j<m; j++)
                 A[i,j] = rnd.NextDouble();
 
-        WriteLine("Matrix A:");
+        WriteLine($"Generating a random {n}x{m} matrix A and checking its QR decomposition:");
+        WriteLine("\nMatrix A:");
         A.print();
 
         var QR_res = QR.decomp(A);
-        WriteLine("\nMatrix Q (from A):");
+        WriteLine("\nMatrix Q:");
         QR_res.Item1.print();
-        WriteLine("\nMatrix R (from A):");
+        WriteLine("\nMatrix R:");
         QR_res.Item2.print();
 
         // Check that R is upper triangular
@@ -98,17 +103,21 @@ public class Program{
 
         // check Q.T*Q = I
         matrix I = QR_res.Item1.T * QR_res.Item1;
-        WriteLine("\nQᵀ*Q:");
+        WriteLine("\nQᵀ*Q (should be identity):");
         I.print();
 
         // check Q*R = A
         matrix QR_product = QR_res.Item1 * QR_res.Item2;
-        WriteLine("\nQ*R:");
+        WriteLine("\nQ*R (should reconstruct A):");
         QR_product.print();
 
         // inverse test with a square matrix
 
-        WriteLine("\nChecking inverse of a square matrix B:");
+        WriteLine();
+        WriteLine("=============================================================");
+        WriteLine("Task B");
+        WriteLine("=============================================================");
+        WriteLine();
 
         int size = 3;
         matrix B = new matrix(size,size);
@@ -116,7 +125,8 @@ public class Program{
             for(int j=0; j<size; j++)
                 B[i,j] = rnd.NextDouble();
 
-        WriteLine("\nSquare Matrix B:");
+        WriteLine($"Generating a random {size}×{size} matrix A and vector b, solving A x = b, and checking inverse:");
+        WriteLine("\nMatrix A:");
         B.print();
 
         // create random vector b
@@ -127,9 +137,9 @@ public class Program{
         b.print();
 
         var QR_res2 = QR.decomp(B);
-        WriteLine("\nMatrix Q (from B):");
+        WriteLine("\nMatrix Q:");
         QR_res2.Item1.print();
-        WriteLine("\nMatrix R (from B):");
+        WriteLine("\nMatrix R:");
         QR_res2.Item2.print();
 
         // solve QRx=b
@@ -139,7 +149,7 @@ public class Program{
 
         // check B*x=b
         vector Bx = B*x;
-        WriteLine("\nB*x:");
+        WriteLine("\nB*x (should equal b):");
         Bx.print();
 
         // compute inverse of B
@@ -149,7 +159,7 @@ public class Program{
 
         // Check AB = I
         matrix prod = B * B_inv;
-        WriteLine("\nB*B⁻¹:");
+        WriteLine("\nB*B⁻¹ (should be identity):");
         prod.print();
 
     }
