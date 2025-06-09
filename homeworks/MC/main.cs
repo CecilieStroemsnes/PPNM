@@ -15,7 +15,17 @@ class Program {
         var Ns = new int[] {100, 200, 300, 400, 500, 750, 1000, 1250, 1500, 2000, 2500, 3000, 3500};
         double exact = PI;
 
-        Console.WriteLine("--- Plain Monte Carlo (Task A) ---");
+        Console.WriteLine();
+        Console.WriteLine("=============================================================");
+        Console.WriteLine("Task A");
+        Console.WriteLine("=============================================================\n");
+
+        Console.WriteLine("Saved plain Monte Carlo errors to:");
+        Console.WriteLine("  - unit_circle_estimated.txt");
+        Console.WriteLine("  - unit_circle_actual.txt");
+
+        Console.WriteLine("The plot plain_mc_plot.png compares these errors with a reference line ~1/√N.");
+        Console.WriteLine();
 
         using (var plainEst = new StreamWriter("unit_circle_estimated.txt"))
         using (var plainAct = new StreamWriter("unit_circle_actual.txt"))
@@ -26,11 +36,9 @@ class Program {
                 plainAct.WriteLine($"{N.ToString(CultureInfo.InvariantCulture)} {Abs(result - exact).ToString(CultureInfo.InvariantCulture)}");
             }
         }
-
-        Console.WriteLine("Output written to unit_circle_estimated.txt and unit_circle_actual.txt");
-
-        // 3D Singular Integral
-        Console.WriteLine("\n--- 3D Singular Integral ---");
+        Console.WriteLine();
+        Console.WriteLine("Estimating a known 3D integral as an additional test:");
+        Console.WriteLine();
 
         var hardIntegral = new Func<vector, double>(v => {
             double x = v[0], y = v[1], z = v[2];
@@ -51,7 +59,15 @@ class Program {
         Console.WriteLine($"Actual error: {Abs(res - refVal):F12}");
 
         // Quasi-random
-        Console.WriteLine("\n--- Quasi-Random MC (Halton, Task B) ---");
+        Console.WriteLine();
+        Console.WriteLine("=============================================================");
+        Console.WriteLine("Task B");
+        Console.WriteLine("=============================================================\n");
+        Console.WriteLine("Saved Halton (quasi-random) errors to:");
+        Console.WriteLine("  - unit_circle_qrand_estimated.txt");
+
+        Console.WriteLine("The plot quasi_mc_plot.png shows the error compared to 1/√N.");
+        Console.WriteLine();
 
         using (var qrand = new StreamWriter("unit_circle_qrand_estimated.txt"))
         {
@@ -61,7 +77,5 @@ class Program {
             }
         }
 
-
-        Console.WriteLine("Output written to unit_circle_qrand_estimated.txt");
     }
 }
