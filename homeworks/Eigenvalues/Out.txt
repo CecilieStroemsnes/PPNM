@@ -77,8 +77,17 @@ Lowest 5 hydrogen eigenvalues ε₀, ε₁, ..., ε₄:
 ε_3 = 0.41176
 ε_4 = 0.82965
 
+Note:
+The exact hydrogen energy levels are given by ε_n = -1/(2n²).
+For example: ε₀ = -0.500, ε₁ = -0.125, ε₂ = -0.056, etc.
+Our computed values deviate from these due to:
+  - A relatively large step size dr = 0.3
+  - A limited box size rmax = 10
+These settings are sufficient to capture the qualitative behavior,
+but more accurate energies would require smaller dr and larger rmax.
 Convergence data saved in convergence_dr.txt and convergence_rmax.txt
-Corresponding plots generated as dr.svg and rmax.svg
+See convergence plots (dr.svg and rmax.svg) for more details.
+
 
 Wavefunctions saved in wavefunctions.txt
 Plot of wavefunctions generated as wavefunctions.svg
@@ -86,17 +95,6 @@ Plot of wavefunctions generated as wavefunctions.svg
 =============================================================
 Task C
 =============================================================
-
-n=20, time=0.0003s
-n=40, time=0.0020s
-n=60, time=0.0067s
-n=80, time=0.0158s
-n=100, time=0.0332s
-n=120, time=0.0547s
-n=140, time=0.0871s
-n=160, time=0.1281s
-n=180, time=0.1803s
-n=200, time=0.2482s
 
 Timing data written to scaling_times.txt
 Scaling plot saved as scaling.svg

@@ -103,6 +103,19 @@ public class main {
             Console.WriteLine($"ε_{i} = {energies[i]:f5}");
         }
 
+        Console.WriteLine();
+        Console.WriteLine("Note:");
+        Console.WriteLine("The exact hydrogen energy levels are given by ε_n = -1/(2n²).");
+        Console.WriteLine("For example: ε₀ = -0.500, ε₁ = -0.125, ε₂ = -0.056, etc.");
+        Console.WriteLine("Our computed values deviate from these due to:");
+        Console.WriteLine("  - A relatively large step size dr = 0.3");
+        Console.WriteLine("  - A limited box size rmax = 10");
+        Console.WriteLine("These settings are sufficient to capture the qualitative behavior,");
+        Console.WriteLine("but more accurate energies would require smaller dr and larger rmax.");
+        Console.WriteLine("Convergence data saved in convergence_dr.txt and convergence_rmax.txt");
+        Console.WriteLine("See convergence plots (dr.svg and rmax.svg) for more details.");
+        Console.WriteLine();
+
 
         // Convergence test dr
         using (var writer = new StreamWriter("convergence_dr.txt")) {
@@ -149,10 +162,6 @@ public class main {
             }
         }
 
-        Console.WriteLine();
-        Console.WriteLine("Convergence data saved in convergence_dr.txt and convergence_rmax.txt");
-        Console.WriteLine("Corresponding plots generated as dr.svg and rmax.svg");
-
         // wavefunctions
         using (var writer = new StreamWriter("wavefunctions.txt")) {
             double norm = 1.0 / Math.Sqrt(dr);
@@ -191,11 +200,10 @@ public class main {
 
                 double seconds = sw.Elapsed.TotalSeconds;
                 writer.WriteLine($"{n_scaling} {seconds:F6}");
-                Console.WriteLine($"n={n_scaling}, time={seconds:F4}s");
+                //Console.WriteLine($"n={n_scaling}, time={seconds:F4}s");
             }
         }
 
-        Console.WriteLine();
         Console.WriteLine("Timing data written to scaling_times.txt");
         Console.WriteLine("Scaling plot saved as scaling.svg");
         Console.WriteLine();
