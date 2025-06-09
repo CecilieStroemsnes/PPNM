@@ -146,8 +146,13 @@ public class Program{
         // Propagate uncertainty to half-life: T_half = ln(2)/λ, so dT/dλ = -ln2/λ^2.
         double sigma_T = (Math.Log(2) / (lambda_fit * lambda_fit)) * sigma_lambda;
 
-        // Print the results.
-        Console.WriteLine("Fit results for ln(y) = ln(a) - λt:");
+        Console.WriteLine();
+        Console.WriteLine("=============================================================");
+        Console.WriteLine("Task A");
+        Console.WriteLine("=============================================================");
+        Console.WriteLine();
+        Console.WriteLine("We fit the linearized model: ln(y) = ln(a) - λ·t");
+        Console.WriteLine("Fit results:");
         Console.WriteLine("ln(a) = {0:F5} ± {1:F5}", ln_a, sigma_ln_a);
         Console.WriteLine("-λ    = {0:F5} ± {1:F5}", c2, sigma_c2);
         Console.WriteLine();
@@ -155,15 +160,39 @@ public class Program{
         Console.WriteLine("a (activity factor) = {0:F5}", a_fit);
         Console.WriteLine("λ (decay constant)  = {0:F5} ± {1:F5}", lambda_fit, sigma_lambda);
         Console.WriteLine("Estimated half-life T1/2 = {0:F5} ± {1:F5} days", T_half, sigma_T);
-        
-        // Modern half-life for 224Ra is about 3.66 days.
-        double modern_half_life = 3.66;
         Console.WriteLine();
-        Console.WriteLine("Modern half-life for 224Ra: {0:F2} days", modern_half_life);
-        if (Math.Abs(T_half - modern_half_life) <= sigma_T) {
-            Console.WriteLine("The estimated half-life agrees with the modern value within the uncertainty.");
+        Console.WriteLine("See figure: decay_fit.png");
+
+        Console.WriteLine();
+        Console.WriteLine("=============================================================");
+        Console.WriteLine("Task B");
+        Console.WriteLine("=============================================================");
+        Console.WriteLine();
+        Console.WriteLine("Uncertainties (from covariance matrix):");
+        Console.WriteLine($"  σ[ln(a)] = {sigma_ln_a:F5}");
+        Console.WriteLine($"  σ[λ]     = {sigma_lambda:F5}");
+        Console.WriteLine($"  σ[T½]    = {sigma_T:F5} days");
+        Console.WriteLine();
+        Console.WriteLine("Modern half-life for 224Ra: 3.66 days");
+        if (Math.Abs(T_half - 3.66) <= sigma_T) {
+            Console.WriteLine("✅ The estimated half-life agrees with the modern value within uncertainty.");
         } else {
-            Console.WriteLine("The estimated half-life does NOT agree with the modern value within the uncertainty.");
+            Console.WriteLine("The estimated half-life does not agree with the modern value within uncertainty.");
         }
+        Console.WriteLine();
+        Console.WriteLine("See figure: decay_fit_uncertainty.png");
+
+        // === Task C ===
+        Console.WriteLine();
+        Console.WriteLine("=============================================================");
+        Console.WriteLine("Task C");
+        Console.WriteLine("=============================================================");
+        Console.WriteLine();
+        Console.WriteLine("We evaluate the sensitivity of the model by plotting:");
+        Console.WriteLine("  F(x) = exp[(ln(a) ± σ[ln(a)]) + (–λ ± σ[λ])·x]");
+        Console.WriteLine("This shows how much the model shifts under coefficient uncertainty.");
+        Console.WriteLine();
+        Console.WriteLine("See figure: fit_with_uncertainty.png");
+        Console.WriteLine();
     }
 }

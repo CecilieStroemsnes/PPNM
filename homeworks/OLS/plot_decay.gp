@@ -1,37 +1,22 @@
-# Set the terminal and output file.
-set terminal pngcairo size 800,600 enhanced font 'Verdana,10'
-set output 'fit_with_uncertainty.png'
+# plot_decay.gp
+# Basic decay fit: experimental data with error bars + best-fit curve
 
-# Set title and axes labels.
-set title 'Fit with Uncertainties on Coefficients'
+set terminal pngcairo size 800,600 enhanced font 'Verdana,10'
+set output 'decay_fit.png'
+
+set title 'Radioactive Decay of ThX'
 set xlabel 'Time (days)'
 set ylabel 'Activity (relative units)'
 
-# Best-fit parameters from your output.
-c0 = 4.95866       # ln(a)
-c1 = -0.17062      # -λ
+# Best-fit parameters (from your output)
+a = 142.40354
+lambda = 0.17062
 
-# Uncertainties of the coefficients.
-dc0 = 0.03540
-dc1 = 0.00716
+# Model function
+f(x) = a * exp(-lambda * x)
 
-# Define the best-fit function (in the original activity scale).
-f(x) = exp(c0 + c1*x)
+set key top right
 
-# Define the four variations by adding/subtracting the uncertainties.
-f1(x) = exp((c0+dc0) + (c1+dc1)*x)
-f2(x) = exp((c0+dc0) + (c1-dc1)*x)
-f3(x) = exp((c0-dc0) + (c1+dc1)*x)
-f4(x) = exp((c0-dc0) + (c1-dc1)*x)
-
-# Optionally, define a style for the uncertainty curves.
-set style line 1 lt 2 lw 1 pt 7 linecolor rgb "blue"
-set style line 2 lt 3 lw 1 pt 7 linecolor rgb "blue"
-
-# Plot the experimental data with error bars, the best-fit curve, and the uncertainty variations.
+# Plot data (with y-error bars) and best-fit curve
 plot 'data.txt' using 1:2:3 with yerrorbars title 'Experimental data', \
-     f(x) with lines lw 3 linecolor rgb "red" title 'Best Fit', \
-     f1(x) with lines ls 1 title 'Fit: c0+dc0, c1+dc1', \
-     f2(x) with lines ls 1 title 'Fit: c0+dc0, c1-dc1', \
-     f3(x) with lines ls 2 title 'Fit: c0-dc0, c1+dc1', \
-     f4(x) with lines ls 2 title 'Fit: c0-dc0, c1-dc1'
+     f(x) with lines lw 2 title sprintf("Best fit: y = %.5f e^{-%.5f x}", a, lambda)

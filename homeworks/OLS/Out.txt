@@ -1,4 +1,10 @@
-Fit results for ln(y) = ln(a) - λt:
+
+=============================================================
+Task A
+=============================================================
+
+We fit the linearized model: ln(y) = ln(a) - λ·t
+Fit results:
 ln(a) = 4,95866 ± 0,03540
 -λ    = -0,17062 ± 0,00716
 
@@ -7,5 +13,29 @@ a (activity factor) = 142,40354
 λ (decay constant)  = 0,17062 ± 0,00716
 Estimated half-life T1/2 = 4,06242 ± 0,17039 days
 
-Modern half-life for 224Ra: 3,66 days
-The estimated half-life does NOT agree with the modern value within the uncertainty.
+See figure: decay_fit.png
+
+=============================================================
+Task B
+=============================================================
+
+Uncertainties (from covariance matrix):
+  σ[ln(a)] = 0,03540
+  σ[λ]     = 0,00716
+  σ[T½]    = 0,17039 days
+
+Modern half-life for 224Ra: 3.66 days
+The estimated half-life does not agree with the modern value within uncertainty.
+
+See figure: decay_fit_uncertainty.png
+
+=============================================================
+Task C
+=============================================================
+
+We evaluate the sensitivity of the model by plotting:
+  F(x) = exp[(ln(a) ± σ[ln(a)]) + (–λ ± σ[λ])·x]
+This shows how much the model shifts under coefficient uncertainty.
+
+See figure: fit_with_uncertainty.png
+
