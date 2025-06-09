@@ -5,7 +5,9 @@ using static System.Math;
 
 class Program {
     static void Main() {
-        Console.WriteLine("Task A: Newton's method with numerical Jacobian and back-tracking line-search");
+        Console.WriteLine();
+        Console.WriteLine("=============================================================");
+        Console.WriteLine("Task A");
         Console.WriteLine("=============================================================");
         Console.WriteLine();
         
@@ -63,9 +65,12 @@ class Program {
             Console.WriteLine();
         }
 
-        Console.WriteLine("Task B: Bound states of hydrogen atom with shooting method for boundary value problems");
+        Console.WriteLine();
+        Console.WriteLine("=============================================================");
+        Console.WriteLine("Task B");
         Console.WriteLine("=============================================================");
         Console.WriteLine();
+
 
         double rmin = 0.001;
         double rmax = 8.0;
@@ -90,6 +95,7 @@ class Program {
             return new vector(yb[0]);
         };
 
+        Console.WriteLine($"Searching for energy eigenvalue using rmin = {rmin}, rmax = {rmax}");
         vector E0vec = root.newton(wavefunction_solver, new vector(-1.0), 1e-6);
         double E0 = E0vec[0];
         Console.WriteLine($"Found ground state energy: E0 = {E0:F6} (expected: -0.5)\n");

@@ -1,19 +1,15 @@
-CSFILES = main.cs root.cs vector.cs matrix.cs ode.cs genlist.cs hydrogen.cs
-TARGET = root.exe
+all: out.txt wavefunction.png convergence_acc.png convergence_eps.png convergence_rmin.png convergence_rmax.png
 
-all: $(TARGET)
+out.txt: root.exe
+	mono root.exe > out.txt
 
-$(TARGET): $(CSFILES)
-	mcs -target:exe -out:$(TARGET) $(CSFILES)
+root.exe: main.cs root.cs vector.cs matrix.cs ode.cs genlist.cs hydrogen.cs
+	mcs -target:exe -out:root.exe main.cs root.cs vector.cs matrix.cs ode.cs genlist.cs hydrogen.cs
 
-cat: $(TARGET)
-	mono $(TARGET) > out.txt
-	cat out.txt
-	gnuplot plot_hydrogen.gnu
-	gnuplot plot_rmax.gnu
-	gnuplot plot_rmin.gnu
-	gnuplot plot_acc.gnu
-	gnuplot plot_eps.gnu
+wavefunction.png convergence_acc.png convergence_eps.png convergence_rmin.png convergence_rmax.png: \
+	plots.gnu acc.txt eps.txt rmin.txt rmax.txt out_hydrogen.txt
+	gnuplot plots.gnu
 
+.PHONY: clean
 clean:
-	rm -f $(TARGET) out.txt out_hydrogen.txt *.txt *.png
+	rm -f root.exe out.txt *.txt *.png

@@ -1,4 +1,6 @@
-Task A: Newton's method with numerical Jacobian and back-tracking line-search
+
+=============================================================
+Task A
 =============================================================
 
 Solving ∇f(x, y) = 0 for the Rosenbrock function:
@@ -27,9 +29,12 @@ Minimum #3 found at:
 Minimum #4 found at:
       3,58      -1,85 
 
-Task B: Bound states of hydrogen atom with shooting method for boundary value problems
+
+=============================================================
+Task B
 =============================================================
 
+Searching for energy eigenvalue using rmin = 0,001, rmax = 8
 Found ground state energy: E0 = -0,499975 (expected: -0.5)
 
 Wrote numerical and exact wavefunctions to out_hydrogen.txt
