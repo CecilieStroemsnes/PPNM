@@ -1,27 +1,36 @@
------------ Task A -----------
 
-Testing basic integrals:
+=============================================================
+Task A
+=============================================================
 
-∫ sqrt(x) dx from 0 to 1 ≈ 0.666666679685227, expected: 0.666666666666667
-∫ 1/sqrt(x) dx from 0 to 1 ≈ 1.99999999894916, expected: 2
-∫ sqrt(1 - x^2) dx from 0 to 1 ≈ 0.785398170578572, expected: 0.785398163397448
-∫ ln(x)/sqrt(x) dx from 0 to 1 ≈ -3.99999999941305, expected: -4
+Testing adaptive integrator on basic functions with known exact results:
 
-Testing erf(z) implementation:
+∫ sqrt(x) dx from 0 to 1 ≈ 0.6667, expected: 0.6667
+∫ 1/sqrt(x) dx from 0 to 1 ≈ 2.00, expected: 2
+∫ sqrt(1 - x^2) dx from 0 to 1 ≈ 0.7854, expected: 0.7854
+∫ ln(x)/sqrt(x) dx from 0 to 1 ≈ -4.00, expected: -4
 
-acc		computed			error
-1.0E-001	8.42510367644053290E-001	1.90E-004
-1.0E-002	8.42510367644053290E-001	1.90E-004
-1.0E-003	8.42729958487198670E-001	2.92E-005
-1.0E-004	8.42701222507406090E-001	4.30E-007
-1.0E-005	8.42700821177096330E-001	2.82E-008
-1.0E-006	8.42700794199360950E-001	1.25E-009
-1.0E-007	8.42700792988137490E-001	3.84E-011
-1.0E-008	8.42700792951846520E-001	2.13E-012
+Testing error function erf(z) implementation for z = 1.0:
 
------------ Task B -----------
+acc		computed				error
+1.0E-001	8.425104E-001	1.90E-004
+1.0E-002	8.425104E-001	1.90E-004
+1.0E-003	8.427300E-001	2.92E-005
+1.0E-004	8.427012E-001	4.30E-007
+1.0E-005	8.427008E-001	2.82E-008
+1.0E-006	8.427008E-001	1.25E-009
+1.0E-007	8.427008E-001	3.84E-011
+1.0E-008	8.427008E-001	2.13E-012
 
-Clenshaw–Curtis transformation and infinite limits
+Two plots have been generated for Task A:
+     plot_erf.png shows computed erf(x) vs. tabulated values.
+     plot_acc.png shows how the absolute error in erf(1) decreases with tighter accuracy goals (log-log plot).
+
+=============================================================
+Task B
+=============================================================
+
+This task compares regular adaptive integration and Clenshaw–Curtis transformation on difficult integrals:
 
 ∫₀¹ dx 1/√x
   Adaptive:         1.99999999894916
@@ -37,10 +46,15 @@ Clenshaw–Curtis transformation and infinite limits
   Clenshaw–Curtis (∞): 0.886226637344603
   Exact:               0.886226925452758
 
------------ Task C -----------
 
-Adaptive integration with error estimation
+=============================================================
+Task C
+=============================================================
 
-∫₀¹ dx 1/√x ≈ 1.99996150007805
-Estimated error: 0.000412012551873603
-Actual error:    3.84999219513738E-05
+We now use the AdaptiveWithError method to estimate the integration error.
+
+∫₀¹ dx 1/√x using AdaptiveWithError
+  Value:            1.99996150007805
+  Estimated error:  0.000412012551873603
+  Actual error:     3.84999219513738E-05
+
