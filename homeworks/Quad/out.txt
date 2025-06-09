@@ -47,6 +47,10 @@ This task compares regular adaptive integration and Clenshaw–Curtis transforma
   Exact:               0.886226925452758
 
 
+Note: For comparison, the same integrals were evaluated in Python using scipy.integrate.quad.
+The results were consistent within estimated numerical accuracy.
+The script can be found under test_integrals.py
+
 =============================================================
 Task C
 =============================================================

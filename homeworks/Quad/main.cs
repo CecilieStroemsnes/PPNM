@@ -88,6 +88,10 @@ class Program
         Console.WriteLine($"  Clenshaw–Curtis (∞): {resultInf}");
         Console.WriteLine($"  Exact:               {Math.Sqrt(Math.PI) / 2}\n");
 
+        Console.WriteLine("\nNote: For comparison, the same integrals were evaluated in Python using scipy.integrate.quad.");
+        Console.WriteLine("The results were consistent within estimated numerical accuracy.");
+        Console.WriteLine("The script can be found under test_integrals.py");
+
         // ========== TASK C ==========
         Console.WriteLine("\n=============================================================");
         Console.WriteLine("Task C");
