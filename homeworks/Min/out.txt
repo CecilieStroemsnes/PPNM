@@ -1,6 +1,6 @@
 
 =============================================================
-Task A: Newton's method with numerical gradient, numerical Hessian matrix and back-tracking linesearch
+Task A
 =============================================================
 
 Rosebrock guess: [2,0000, 2,0000]
@@ -10,7 +10,7 @@ Himmelblau guess: [-2,0000, 2,0000]
 Himmelblau minimum: [-2,8051, 3,1313], steps: 5
 
 =============================================================
-Task B: Higgs boson discovery
+Task B
 =============================================================
 
 Best fit parameters:
@@ -23,7 +23,7 @@ Data points written to data.txt
 A plot of the fit can be found in higgs_fit.png.
 
 =============================================================
-Task C: Central instead of forward finite difference approximation for the derivatives
+Task C
 =============================================================
 
 Comparing gradient approximations at the known minimum (x, y) = (1, 1):

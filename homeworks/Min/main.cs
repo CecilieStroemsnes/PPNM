@@ -35,7 +35,7 @@ class Program {
 
         Console.WriteLine();
         Console.WriteLine("=============================================================");
-        Console.WriteLine("Task A: Newton's method with numerical gradient, numerical Hessian matrix and back-tracking linesearch");
+        Console.WriteLine("Task A");
         Console.WriteLine("=============================================================");
         Console.WriteLine();
 
@@ -58,7 +58,7 @@ class Program {
 
         Console.WriteLine();
         Console.WriteLine("=============================================================");
-        Console.WriteLine("Task B: Higgs boson discovery");
+        Console.WriteLine("Task B");
         Console.WriteLine("=============================================================");
         Console.WriteLine();
 
@@ -118,7 +118,7 @@ class Program {
 
         Console.WriteLine();
         Console.WriteLine("=============================================================");
-        Console.WriteLine("Task C: Central instead of forward finite difference approximation for the derivatives");
+        Console.WriteLine("Task C");
         Console.WriteLine("=============================================================");
         Console.WriteLine();
 
