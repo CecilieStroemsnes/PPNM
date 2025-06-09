@@ -1,0 +1,30 @@
+
+=============================================================
+Task A
+=============================================================
+
+Simple Harmonic Oscillator:
+Steps taken: 1331
+Figure: sho.png
+
+Damped Harmonic Oscillator:
+Steps taken: 2461
+Figure: damped.png
+
+
+=============================================================
+Task B
+=============================================================
+
+Newtonian circular orbit:
+Steps taken: 272
+Figure: circular_orbit.png
+
+Newtonian Elliptical Orbit:
+Steps taken: 835
+Figure: newton_orbit.png
+
+Relativistic Orbit with Precession:
+Steps taken: 3565
+Figure: relativistic_orbit.png
+

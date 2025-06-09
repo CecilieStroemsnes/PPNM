@@ -1,31 +1,15 @@
-# Compiler
-CSC = mcs
+all: out.txt sho.png damped.png newton_orbit.png relativistic_orbit.png
 
-# Executable name
-OUT = main.exe
+out.txt: main.exe
+	mono main.exe > out.txt
 
-# Source files
-SRC = main.cs ode.cs vector.cs genlist.cs
+main.exe: main.cs ode.cs vector.cs genlist.cs
+	mcs -target:exe -out:main.exe main.cs ode.cs vector.cs genlist.cs
 
-# Default target
-all: $(OUT)
-
-# Compile the project
-$(OUT): $(SRC)
-	$(CSC) -out:$(OUT) $(SRC)
-
-# Run the program
-run: $(OUT)
-	mono $(OUT)
-
-# Add gnuplot target
-plot: 
+sho.png damped.png circular_orbit.png newton_orbit.png relativistic_orbit.png: \
+	plots.gnuplot sho.txt damped.txt circular_orbit.txt newton_orbit.txt relativistic_orbit.txt
 	gnuplot plots.gnuplot
 
-# Run everything in one step
-allrun: all run plot
-
-
-# Clean up generated files
+.PHONY: clean
 clean:
-	rm -f *.exe *.txt
+	rm -f main.exe out.txt *.txt *.png *.pdf
