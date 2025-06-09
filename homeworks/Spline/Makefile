@@ -1,36 +1,17 @@
-CSC    = mcs
-TARGET = main.exe
-SRC    = main.cs
+all: out.txt linear_plot.svg quad_plot.svg
 
-# Output files
-OUTTXT     = Out.txt
-LINEAR     = linear_interp.txt
-QUAD       = quad_interp.txt
-PLOTS      = linear_plot.svg quad_plot.svg integral_plot.svg compare_plot.svg
+out.txt: main.exe
+	mono main.exe > out.txt
 
-all: $(OUTTXT) $(PLOTS)
+linear_plot.svg: linear_interp.txt plot_linear.gnu
+	gnuplot plot_linear.gnu
 
-# Compile C# program
-$(TARGET): $(SRC)
-	$(CSC) -out:$(TARGET) $(SRC)
+quad_plot.svg: quad_interp.txt plot_quad.gnu
+	gnuplot plot_quad.gnu
 
-# Run program to generate data and Out.txt
-$(OUTTXT) $(LINEAR) $(QUAD): $(TARGET)
-	mono $(TARGET)
-
-# Generate plots using gnuplot
-linear_plot.svg: plot_linear.gnu $(LINEAR)
-	gnuplot $<
-
-quad_plot.svg: plot_quad.gnu $(QUAD)
-	gnuplot $<
-
-integral_plot.svg: plot_integral.gnu $(LINEAR) $(QUAD)
-	gnuplot $<
-
-compare_plot.svg: plot_compare.gnu $(LINEAR) $(QUAD)
-	gnuplot $<
+main.exe: main.cs
+	mcs -target:exe -out:main.exe main.cs
 
 .PHONY: clean
 clean:
-	rm -f $(TARGET) $(OUTTXT) $(LINEAR) $(QUAD) $(PLOTS)
+	rm -f main.exe out.txt linear_interp.txt quad_interp.txt *.svg *.png

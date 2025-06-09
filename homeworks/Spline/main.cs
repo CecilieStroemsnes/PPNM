@@ -124,16 +124,28 @@ public class Program{
             y_sin[i] = Sin(i);
         }
 
-        using (var outFile = new StreamWriter("Out.txt")) {
-            outFile.WriteLine("A. Linear spline (linear interpolation)\n");
-            outFile.WriteLine("x\ty=Cos(x)");
-            for (int i = 0; i < n; i++)
-                outFile.WriteLine($"{x[i]}	{y_cos[i]}");
-            outFile.WriteLine("\nThe linear interpolation and its integral are plotted in linear_*.svg\n");
+        Console.WriteLine();
+        Console.WriteLine("=============================================================");
+        Console.WriteLine("Task A");
+        Console.WriteLine("=============================================================\n");
+        Console.WriteLine("This task interpolates y = Cos(x) using linear interpolation,");
+        Console.WriteLine("and computes the integral of the interpolant.\n");
 
-            outFile.WriteLine("B. Quadratic spline\n");
-            outFile.WriteLine("The quadratic spline for y=Sin(x) and its derivative/integral are plotted in quad_*.svg\n");
-        }
+        Console.WriteLine("Data points used:");
+        Console.WriteLine("   x        y = cos(x)");
+        for (int i = 0; i < n; i++)
+            Console.WriteLine($"{x[i],5:F2}    {y_cos[i],10:F6}");
+
+        Console.WriteLine();
+        Console.WriteLine("Plots saved to: linear_plot.png");
+
+        Console.WriteLine();
+        Console.WriteLine("=============================================================");
+        Console.WriteLine("Task B");
+        Console.WriteLine("=============================================================\n");
+        Console.WriteLine("This task interpolates y = Sin(x) using a quadratic spline,");
+        Console.WriteLine("and computes the derivative and the integral of the spline.\n");
+        Console.WriteLine("Plots saved to: quad_plot.png");
 
         // Write data for linear spline
         using (var writer = new StreamWriter("linear_interp.txt")) {
@@ -153,9 +165,3 @@ public class Program{
         }
     }
 }
-
-
-
-
-
-

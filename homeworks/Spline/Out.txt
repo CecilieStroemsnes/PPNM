@@ -1,20 +1,31 @@
-A. Linear spline (linear interpolation)
 
-x	y=Cos(x)
-0	1
-1	0,54030230586814
-2	-0,416146836547142
-3	-0,989992496600445
-4	-0,653643620863612
-5	0,283662185463226
-6	0,960170286650366
-7	0,753902254343305
-8	-0,145500033808614
-9	-0,911130261884677
+=============================================================
+Task A
+=============================================================
 
-The linear interpolation and its integral are plotted in linear_*.svg
+This task interpolates y = Cos(x) using linear interpolation,
+and computes the integral of the interpolant.
 
-B. Quadratic spline
+Data points used:
+   x        y = cos(x)
+ 0,00      1,000000
+ 1,00      0,540302
+ 2,00     -0,416147
+ 3,00     -0,989992
+ 4,00     -0,653644
+ 5,00      0,283662
+ 6,00      0,960170
+ 7,00      0,753902
+ 8,00     -0,145500
+ 9,00     -0,911130
 
-The quadratic spline for y=Sin(x) and its derivative/integral are plotted in quad_*.svg
+Plots saved to: linear_plot.png
 
+=============================================================
+Task B
+=============================================================
+
+This task interpolates y = Sin(x) using a quadratic spline,
+and computes the derivative and the integral of the spline.
+
+Plots saved to: quad_plot.png
