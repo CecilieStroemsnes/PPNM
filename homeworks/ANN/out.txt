@@ -1,0 +1,33 @@
+
+=============================================================
+Task A
+=============================================================
+
+Test of simple neural network using quasi-Newton minimisation
+Activation: Gaussian wavelet, f(x) = x * exp(-x²)
+
+Output:
+- plot.png                : ANN fit vs. true function
+- ann.txt                 : ANN predictions
+- true.txt                : True values
+
+
+=============================================================
+Task B
+=============================================================
+
+The ANN was trained to learn f(x) = cos(x) and can now compute:
+
+- The first derivative    f'(x) ≈ ann'(x)
+- The second derivative   f''(x) ≈ ann''(x)
+- The antiderivative      ∫f(x) dx ≈ ∫ann(x)dx
+
+Results are saved in:
+- plot_deriv.png
+- plot_dderiv.png
+- plot_antideriv.png
+
+Numeric values can be found in:
+- ann_deriv.txt vs. true_deriv.txt
+- ann_dderiv.txt vs. true_dderiv.txt
+- ann_antideriv.txt vs. true_antideriv.txt
