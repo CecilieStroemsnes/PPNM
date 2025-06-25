@@ -1,0 +1,76 @@
+=============================================================
+Basic 3x3 Test
+=============================================================
+
+Input D (diagonal):
+         1          2          3 
+
+Input u (vector):
+         1          1          1 
+
+Eigenvalues of A = D + uuᵀ:
+      1,32       2,46       5,21 
+
+A visualization of the secular function f(λ) is generated as 'secular.png'.
+This function has vertical poles at each dᵢ and crosses zero at each eigenvalue λᵢ.
+In the plot:
+ - Blue lines: poles (diagonal elements dᵢ)
+ - Red dashed lines: eigenvalues (roots of f(λ))
+ - Black dashed line: f(λ) = 0
+ - Orange curve: secular function f(λ)
+
+
+=============================================================
+Random Test (n = 10)
+=============================================================
+
+Input D (random diagonal):
+      6,68       1,26       1,68       7,24       1,74       2,35       5,06       3,81       5,17       8,14 
+
+Input u (random vector):
+    -0,718     0,0455     -0,475     0,0258      0,523     -0,485      -0,36      -0,48     -0,929      0,154 
+
+Eigenvalues of A = D + σ * uuᵀ:
+      1,48       1,68       2,02       2,35          4       5,12       5,39       6,78       8,09       8,72 
+
+Trace estimate (sum of diag(D) + σ * ||u||^2): 45,627992
+
+Sum of eigenvalues: 45,627992
+
+Difference between trace and sum of eigenvalues: 0,000000
+
+This confirms the trace property: Tr(A) = sum(λᵢ).
+
+
+=============================================================
+Comparison of σ = 1 and σ = -1
+=============================================================
+
+Eigenvalues for σ = 1 with simple 3x3 test:
+      1,32       2,46       5,21 
+
+Eigenvalues for σ = -1 with simple 3x3 test:
+      1,54       2,68      -1,21 
+
+Difference between eigenvalues for σ = 1 and σ = -1:
+Δλ[0] = 0,214320
+Δλ[1] = 0,214320
+Δλ[2] = 6,428639
+
+Norm of difference, ||λ(σ=1) - λ(σ=-1)|| = : 6,435781
+
+This comparison highlights how the sign of σ affects the spectrum.
+For σ = 1, one eigenvalue shifts above the diagonal range; for σ = -1,
+it shifts below. The eigenvalues are symmetric around the original spectrum,
+but not identically mirrored due to nonlinear dependence in f(λ).
+This shows the sensitivity of the secular equation to the sign of the update.
+
+
+To verify the results, a separate Python script 'test.py' is included in the same folder.
+It uses NumPy to compute the eigenvalues of both:
+ A = D + uuᵀ  (σ = 1)
+ B = D - uuᵀ  (σ = -1)
+The outputs from Python match the results from the C# code closely,
+providing an independent check of the secular equation method.
+
+To run the test:  python3 test.py
