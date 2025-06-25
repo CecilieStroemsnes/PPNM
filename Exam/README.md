@@ -30,7 +30,7 @@ Files:
 Generated files:
 - `out.txt`: All console output
 - `secular.txt`: Data for plotting `f(λ)`
-- `secular.png`: Final plot (used in report/exam)
+- `secular.png`: Final plot
 
 ## Test Cases
 
@@ -63,6 +63,5 @@ This confirms that:
 
 ## Build and Run Instructions
 
-bash
-make         # Builds and runs everything, generates out.txt + secular.png
-make clean   # Removes compiled files and outputs
+- make         # Builds and runs everything, generates out.txt + secular.png
+- make clean   # Removes compiled files and outputs
